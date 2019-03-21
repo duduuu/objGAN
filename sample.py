@@ -1,4 +1,4 @@
-import os, time, itertools, pickle
+import os
 import numpy as np
 import tensorflow as tf
 
