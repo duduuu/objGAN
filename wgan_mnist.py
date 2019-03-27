@@ -74,6 +74,13 @@ D_fake = discriminator(fake_x, isTrain, reuse=True)
 D_loss = tf.reduce_mean(D_fake) - tf.reduce_mean(D_real)
 G_loss = tf.reduce_mean(D_fake)
 
+#alpha = tf.random_uniform(shape=[batch_size, 1, 1, 1], minval=0, maxval=1.)
+#differences = fake_x - x
+#interpolates = x + (alpha*differences)
+#gradients = tf.gradients(discriminator(interpolates, isTrain, reuse=True), [interpolates])[0]
+#slopes = tf.sqrt(tf.reduce_sum(tf.square(gradients), reduction_indices=[1,2]))
+#gradient_penalty = tf.reduce_mean((slopes-1.)**2)
+#D_loss += 10 * gradient_penalty
 
 t_vars = tf.trainable_variables()
 D_vars = [var for var in t_vars if 'discriminator' in var.name]
